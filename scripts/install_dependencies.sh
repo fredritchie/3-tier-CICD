@@ -25,7 +25,7 @@ sudo apt-get install -y nginx
 
 # Install Express.js dependencies
 cd /var/www/html
-npm install express aws-sdk
+sudo npm install express aws-sdk
 
 # Configure Nginx as a reverse proxy for your Node.js app
 sudo tee /etc/nginx/sites-available/default > /dev/null <<EOF
