@@ -28,7 +28,7 @@ sudo apt-get install -y nginx
 cd /var/www/html
 npm install express aws-sdk
 
-sudo rm /var/www/html/index.nginx-debian.html
+# sudo rm /var/www/html/index.nginx-debian.html
 # Configure Nginx as a reverse proxy for your Node.js app
 sudo tee /etc/nginx/sites-available/default > /dev/null <<EOF
 server {
@@ -50,17 +50,17 @@ EOF
 sudo systemctl restart nginx
 
 # Create the Express.js app file
-sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/hypha-3-tier/main/app.js
+# sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/hypha-3-tier/main/app.js
 
 # Install Express.js dependencies
 npm install express
 npm install aws-sdk 
 # Run the Express.js app using PM2
-pm2 start /var/www/html/app.js
+# pm2 start /var/www/html/app.js
 
-# Save PM2 process list to automatically start at boot
-pm2 save
+# # Save PM2 process list to automatically start at boot
+# pm2 save
 
-# Display server status
-sudo systemctl status nginx
-pm2 status
+# # Display server status
+# sudo systemctl status nginx
+# pm2 status
