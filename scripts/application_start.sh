@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/blob/main/app.js
+sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/main/app.js
 
 npm install express
 npm install aws-sdk 
