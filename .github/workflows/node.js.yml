@@ -21,14 +21,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        repository: fredritchie/3-tier-CICD # Specify the correct repository
-        path: app-code  
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Navigate to app-code directory
+      run: cd app-code
     - run: npm ci
     - run: npm run build --if-present
     - name: Configure AWS credentials
