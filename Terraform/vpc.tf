@@ -1,5 +1,5 @@
 resource "aws_vpc" "webapp_VPC" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block           = "10.0.0.0/16"
   enable_dns_support   = true
   enable_dns_hostnames = true
   tags = {
@@ -85,7 +85,7 @@ resource "aws_nat_gateway" "weba-nat" {
 }
 
 resource "aws_eip" "webapp_eip" {
-  domain   = "vpc"
+  domain = "vpc"
 }
 resource "aws_route_table" "webapp_private_route_table" {
   vpc_id = aws_vpc.webapp_VPC.id
@@ -97,8 +97,8 @@ resource "aws_route_table" "webapp_private_route_table" {
   }
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.weba-nat.id  
-    }
+    gateway_id = aws_nat_gateway.weba-nat.id
+  }
 }
 
 resource "aws_route_table_association" "c" {

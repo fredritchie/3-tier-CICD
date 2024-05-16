@@ -8,7 +8,7 @@ resource "aws_dynamodb_table" "webapp" {
     type = "S"
   }
   tags = {
-    Name        = "webapp"
+    Name = "webapp"
   }
 
 }
