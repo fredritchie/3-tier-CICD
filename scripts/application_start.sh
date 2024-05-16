@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/blob/main/app-code/app.js
+sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/blob/main/app.js
+
 npm install express
 npm install aws-sdk 
 # Run the Express.js app using PM2
