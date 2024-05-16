@@ -35,5 +35,5 @@ resource "aws_launch_template" "webapp-template" {
   tags = {
     Name = "webapp-template"
   }
-  # user_data = filebase64("user-data-script.sh")
+  # user_data = filebase64("user-data-script.sh") 
 }
