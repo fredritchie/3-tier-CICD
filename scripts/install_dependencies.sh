@@ -1,17 +1,21 @@
 #!/bin/bash
-set -ex
 
 sudo sed -i 's/#$nrconf{restart} = '"'"'i'"'"';/$nrconf{restart} = '"'"'a'"'"';/g' /etc/needrestart/needrestart.conf
 # Update package lists
 sudo apt-get update
 
 # Install Node.js and npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source ~/.bashrc
-nvm install lts/iron
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
 
-sudo apt-get install -y npm
+# Install CodeDeploy Agent
+sudo apt update
+sudo apt install ruby-full -y
+sudo apt install wget -y
+cd /home/ubuntu
+wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install
+chmod +x ./install
+sudo ./install auto
 
 # Install PM2
 sudo npm install -g pm2
@@ -23,7 +27,6 @@ sudo apt-get install -y nginx
 cd /var/www/html
 npm install express aws-sdk
 
-sudo rm /var/www/html/index.nginx-debian.html
 # Configure Nginx as a reverse proxy for your Node.js app
 sudo tee /etc/nginx/sites-available/default > /dev/null <<EOF
 server {
@@ -40,22 +43,3 @@ server {
     }
 }
 EOF
-
-# Restart Nginx to apply the changes
-sudo systemctl restart nginx
-
-# Create the Express.js app file
-sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/hypha-3-tier/main/app.js
-
-# Install Express.js dependencies
-npm install express
-npm install aws-sdk 
-# Run the Express.js app using PM2
-pm2 start /var/www/html/app.js
-
-# Save PM2 process list to automatically start at boot
-pm2 save
-
-# Display server status
-sudo systemctl status nginx
-pm2 status
