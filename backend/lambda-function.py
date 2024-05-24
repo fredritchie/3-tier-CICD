@@ -1,6 +1,6 @@
 import json
 import boto3
-
+ayayooo ennada nadakudhu ingga for test
 def lambda_handler(event, context):
     # Extract first name and last name from the event payload
     first_name = event['firstName']

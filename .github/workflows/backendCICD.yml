@@ -48,6 +48,9 @@ jobs:
         timeout-minutes: 5
         with:
           scanTaskId: ${{ steps.sonarqube.outputs.scanTaskId }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
 
       - name: Zip Lambda Function
         if: steps.sonarqube.outcome == 'success' 
