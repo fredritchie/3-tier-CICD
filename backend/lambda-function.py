@@ -13,7 +13,7 @@ def lambda_handler(event, context):
     
     try:
         # Insert data into DynamoDB table
-        response = table.put_item(
+        table.put_item(
             Item={
                 'firstName': first_name,
                 'lastName': last_name
