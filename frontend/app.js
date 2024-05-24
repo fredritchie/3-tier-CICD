@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
   <!DOCTYPE html>
   <html>
   <head>
-    <title>Lambda Form</title>
+    <title>Lambda Form Webapp</title>
     <style>
       body {
         font-family: Arial, sans-serif;
