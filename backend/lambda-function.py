@@ -22,7 +22,7 @@ def lambda_handler(event, context):
         # Return success response
         return {
             'statusCode': 200,
-            'body': json.dumps('Data inserted successfully')
+            'body': json.dumps('Data inserted successfully to DynamoDB')
         }
     except Exception as e:
         # Return error response
