@@ -6,10 +6,10 @@ hooks:
       timeout: 300
       runas: ubuntu
   AfterInstall:
-    - location: frontend/application_start.sh
+    - location: frontend/scripts/application_start.sh
       timeout: 300
       runas: ubuntu
   ApplicationStart:
-    - location: frontend/start_server.sh
+    - location: frontend/scripts/start_server.sh
       timeout: 300
       runas: ubuntu
