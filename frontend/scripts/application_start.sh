@@ -18,19 +18,16 @@ sudo apt-get update
 sudo apt-get install -y unzip awscli
 
 # Download and extract files from S3
-aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/app.js /var/www/html/
-aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/package.json /var/www/html/
-aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/package-lock.json /var/www/html/
-aws s3 cp --recursive s3://my-tf-hypha-ritchie-bucket/frontend/node_modules /var/www/html/node_modules
+sudo aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/app.js /var/www/html/
+sudo aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/package.json /var/www/html/
+sudo aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/package-lock.json /var/www/html/
+sudo aws s3 cp --recursive s3://my-tf-hypha-ritchie-bucket/frontend/node_modules /var/www/html/node_modules
 
 # Navigate to the frontend directory (where package.json is located)
 cd /var/www/html
 
-# Install project dependencies (if not already downloaded from S3)
-# npm ci  
-
 # Install express and aws-sdk (if not already in your project's dependencies)
-npm install express aws-sdk 
+sudo npm install express aws-sdk 
 
 # Run the Express.js app using PM2
 sudo pm2 stop all
