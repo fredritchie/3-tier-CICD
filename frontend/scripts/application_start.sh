@@ -1,9 +1,37 @@
+# #!/bin/bash
+
+# sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/main/frontend/app.js
+
+# npm install express
+# npm install aws-sdk 
+# # Run the Express.js app using PM2
+# sudo pm2 stop all
+# sudo pm2 start /var/www/html/app.js
+
+# # Save PM2 process list to automatically start at boot
+# sudo pm2 save
+
+
 #!/bin/bash
+# Install unzip and aws-cli
+sudo apt-get update
+sudo apt-get install -y unzip awscli
 
-sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/main/frontend/app.js
+# Download and extract files from S3
+aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/app.js /var/www/html/
+aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/package.json /var/www/html/
+aws s3 cp s3://my-tf-hypha-ritchie-bucket/frontend/package-lock.json /var/www/html/
+aws s3 cp --recursive s3://my-tf-hypha-ritchie-bucket/frontend/node_modules /var/www/html/node_modules
 
-npm install express
-npm install aws-sdk 
+# Navigate to the frontend directory (where package.json is located)
+cd /var/www/html
+
+# Install project dependencies (if not already downloaded from S3)
+# npm ci  
+
+# Install express and aws-sdk (if not already in your project's dependencies)
+npm install express aws-sdk 
+
 # Run the Express.js app using PM2
 sudo pm2 stop all
 sudo pm2 start /var/www/html/app.js
