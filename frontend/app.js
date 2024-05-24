@@ -1,43 +1,43 @@
-const express = require('express');
-const app = express();
-const AWS = require('aws-sdk');
-const fs = require('fs');
+// const express = require('express');
+// const app = express();
+// const AWS = require('aws-sdk');
+// const fs = require('fs');
 
-AWS.config.region = 'ap-south-1';
-const lambda = new AWS.Lambda({ region: 'ap-south-1' });
+// AWS.config.region = 'ap-south-1';
+// const lambda = new AWS.Lambda({ region: 'ap-south-1' });
 
-app.use(express.json());
+// app.use(express.json());
 
-app.post('/submit', (req, res) => {
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
+// app.post('/submit', (req, res) => {
+//   const firstName = req.body.firstName;
+//   const lastName = req.body.lastName;
 
-  const payload = {
-    firstName,
-    lastName
-  };
+//   const payload = {
+//     firstName,
+//     lastName
+//   };
 
-  console.log("Payload:", payload);
+//   console.log("Payload:", payload);
 
-  const params = {
-    FunctionName: 'form',
-    InvocationType: 'RequestResponse',
-    Payload: JSON.stringify(payload)
-  };
+//   const params = {
+//     FunctionName: 'form',
+//     InvocationType: 'RequestResponse',
+//     Payload: JSON.stringify(payload)
+//   };
 
-  lambda.invoke(params, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send({ message: 'Error invoking Lambda function' });
-    } else {
-      console.log(data);
-      res.send({ message: 'Lambda function test invoked successfully' });
-    }
-  });
-});
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
-});
+//   lambda.invoke(params, (err, data) => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).send({ message: 'Error invoking Lambda function' });
+//     } else {
+//       console.log(data);
+//       res.send({ message: 'Lambda function test invoked successfully' });
+//     }
+//   });
+// });
+// app.listen(3000, () => {
+//   console.log('Server listening on port 3000');
+// });
 
 app.get('/', (req, res) => {
   const indexHtml = `
@@ -94,7 +94,7 @@ app.get('/', (req, res) => {
   </head>
   <body>
     <div class="container">
-      <h1>Welcome to Hypha DevOps Cohorts</h1>
+      <h1>Welcome to Hypha DevOps Solutions Architect Cohorts</h1>
       <h2>Enter your name here</h2>
       <form id="userForm">
         <label for="firstName">First Name:</label>
