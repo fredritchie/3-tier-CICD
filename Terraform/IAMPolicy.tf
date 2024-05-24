@@ -67,7 +67,7 @@ resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
 
 
 resource "aws_iam_policy" "policy_for_EC2" {
-  name        = "invoke_lambda_function"
+  name        = "invoke_lambda_function_and_get_s3_object"
   description = "Access to invoke Lambda function"
 
   # Terraform's "jsonencode" function converts a
@@ -75,6 +75,12 @@ resource "aws_iam_policy" "policy_for_EC2" {
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
+      {
+        "Sid": "AllowObjectDownload",
+        "Effect": "Allow",
+        "Action": "s3:GetObject"
+        "Resource": "arn:aws:s3:::my-tf-hypha-ritchie-bucket/frontend/*" 
+      },
       {
         "Effect" : "Allow",
         "Action" : "lambda:InvokeFunction",
