@@ -36,8 +36,11 @@ jobs:
         run: zip function.zip *   # Zip all files in the backend directory
         
       - name: Update Lambda Function Code
-        uses: aws-actions/aws-lambda-update-function-code@v1
-        with:
-          function-name: form
-          zip-file: backend/function.zip  # Path to the zip file within the backend folder
+        run: |
+          aws lambda update-function-code \
+            --function-name form \
+            --zip-file fileb://backend/function.zip
+            
+      - name: Publish to Lambda
+        run: aws lambda publish-version --function-name form
 
