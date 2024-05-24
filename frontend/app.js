@@ -119,7 +119,7 @@ app.get('/', (req, res) => {
           // Clear form fields
           document.getElementById('userForm').reset();
           // Display success message
-          document.getElementById('message').innerHTML = 'Form submitted successfully!';
+          document.getElementById('message').innerHTML = 'Form submitted successfully to DynamoDB!';
         })
         .catch(error => console.error(error));
       }
