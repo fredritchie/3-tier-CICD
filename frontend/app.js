@@ -1,3 +1,8 @@
+const express = require('express');
+const app = express();
+// const AWS = require('aws-sdk');
+// const fs = require('fs');
+
 app.get('/', (req, res) => {
   const indexHtml = `
   <!DOCTYPE html>
@@ -88,3 +93,6 @@ app.get('/', (req, res) => {
   `;
   res.send(indexHtml);
 });
+app.listen(3000, () => {
+    console.log('Server listening on port 3000');
+  });
