@@ -1,7 +1,5 @@
 const express = require('express');
 const app = express();
-// const AWS = require('aws-sdk');
-// const fs = require('fs');
 
 app.get('/', (req, res) => {
   const indexHtml = `
