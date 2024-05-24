@@ -39,7 +39,7 @@ jobs:
       working-directory: frontend
       run: npm run build --if-present
 
-    - name: SonarQube Backend Scan  # SonarQube scan step
+    - name: SonarQube frontend Scan  # SonarQube scan step
       uses: sonarsource/sonarqube-scan-action@master
       with:
         args: >
