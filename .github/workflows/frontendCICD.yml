@@ -49,6 +49,16 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
 
+    - name: Check Quality Gate  # Add this step
+      uses: sonarsource/sonarqube-quality-gate-action@master
+      if: always() # Always run to check even if the previous step failed
+      timeout-minutes: 5
+      with:
+        scanTaskId: ${{ steps.sonarqube.outputs.scanTaskId }}
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
