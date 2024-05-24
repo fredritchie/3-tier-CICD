@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/main/frontend/app.js
-aws s3 cp s3://my-tf-hypha-ritchie-bucket/* /var/www/html/
+sudo wget -O /var/www/html/app.js https://raw.githubusercontent.com/fredritchie/3-tier-CICD/main/frontend/app.js
 
 npm install express
 npm install aws-sdk 
