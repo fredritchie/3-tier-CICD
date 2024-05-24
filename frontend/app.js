@@ -31,7 +31,7 @@ app.post('/submit', (req, res) => {
       res.status(500).send({ message: 'Error invoking Lambda function' });
     } else {
       console.log(data);
-      res.send({ message: 'Lambda function invoked successfully' });
+      res.send({ message: 'Lambda function test invoked successfully' });
     }
   });
 });
