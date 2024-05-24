@@ -1,4 +1,4 @@
-resource "aws_instance" "web" {
+resource "aws_instance" "sonarqube_vm" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.medium"
   subnet_id              = aws_subnet.subnet-public-1.id

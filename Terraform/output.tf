@@ -8,6 +8,6 @@ output "s3_bucket_name" {
   value = aws_s3_bucket.static_website_bucket.bucket
 }
 
-output "ALB_ARN" {
-  value = aws_lb.webapp-ALB.arn
+output "SonarQube_IP" {
+  value = aws_instance.sonarqube_vm.public_ip
 }
