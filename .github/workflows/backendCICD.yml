@@ -1,6 +1,6 @@
 # .github/workflows/backend-lambda-deploy.yml
 
-name: Backend Lambda Deployment
+name: Backend CICD
 
 on:
   push:
